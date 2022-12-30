@@ -43,6 +43,25 @@ public class item6_avoid_useless_instance {
         end = LocalTime.now();
         diff = Duration.between(start, end);
         System.out.printf("not cached nano     : %d", diff.toNanos());
+
+        System.out.println("\n\nAuto Boxing Test");
+        Long sum = 0L;
+        start = LocalTime.now();
+        for (long i = 0; i <= LOOP; i++) {
+            sum+=i;
+        }
+        end = LocalTime.now();
+        diff = Duration.between(start, end);
+        System.out.printf("auto boxing nano     : %d\n", diff.toNanos());
+
+        long sum2 = 0L;
+        start = LocalTime.now();
+        for (long i = 0; i <= LOOP; i++) {
+            sum2+=i;
+        }
+        end = LocalTime.now();
+        diff = Duration.between(start, end);
+        System.out.printf("un auto boxing nano  : %d", diff.toNanos());
     }
 
     private static final Pattern ROMAN = Pattern.compile(
