@@ -1,4 +1,4 @@
-package ch1;
+package ch2;
 
 
 public class item4_blocked_instancing {

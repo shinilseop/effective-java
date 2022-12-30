@@ -1,6 +1,6 @@
-package ch1;
+package ch2;
 
-import ch1.item2_builder.Coffee.Builder;
+import ch2.item2_builder.Coffee.Builder;
 
 public class item2_builder {
 

@@ -1,6 +1,6 @@
-package ch1;
+package ch2;
 
-import ch1.Pizza.Topping;
+import ch2.Pizza.Topping;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;

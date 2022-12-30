@@ -1,6 +1,5 @@
-package ch1;
+package ch2;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class item3_private_singleton {
