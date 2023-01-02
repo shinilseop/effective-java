@@ -5,10 +5,11 @@ import java.math.BigInteger;
 public class item12_toString {
 
     public static void main(String[] args) {
-
+        PhoneNumber p = new PhoneNumber(707, 867, 5309);
+        System.out.println(p);
     }
 
-    final class PhoneNumber {
+    static final class PhoneNumber {
 
         private final short areaCode, prefix, lineNum;
 
