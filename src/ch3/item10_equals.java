@@ -11,10 +11,14 @@ public class item10_equals {
 
     public static void main(String[] args) {
         Person p1 = new Person("sseop");
+        Developer d = new Developer("sseop", "BE");
+        System.out.println("p1.equals(d) : "+p1.equals(d));
+        System.out.println("d.equals(p1) : "+d.equals(p1));
+
         Person p2 = new Person("sseop");
         Person p3 = new Person("son");
 
-        System.out.println("p1.equals(p2) : " + p1.equals(p2));
+        System.out.println("\np1.equals(p2) : " + p1.equals(p2));
         System.out.println("p1.equals(p3) : " + p1.equals(p3));
         System.out.println("p2.equals(p3) : " + p2.equals(p3));
 //        NotEqualsPerson p4 = new NotEqualsPerson("son");
@@ -28,17 +32,21 @@ public class item10_equals {
 
         List<CaseInsensitiveString> list = new ArrayList<>();
         list.add(s1);
-        System.out.println("list.contains(s1) : " + list.contains(s1));
+        System.out.println("\nlist.contains(s1) : " + list.contains(s1));
 
         Point point = new Point(1, 2);
         ColorPoint colorPoint = new ColorPoint(1, 2, Color.RED);
-//        System.out.println("point.equals(colorPoint) : "+point.equals(colorPoint));
-//        System.out.println("colorPoint.equals(point) : "+colorPoint.equals(point));
+        System.out.println("\npoint.equals(colorPoint) : " + point.equals(colorPoint));
+        System.out.println("colorPoint.equals(point) : " + colorPoint.equals(point));
+        System.out.println("point class      : " + point.getClass());
+        System.out.println("colorPoint class : " + colorPoint.getClass());
+        System.out.println("point class == colorPoint class : " + (point.getClass() == colorPoint.getClass()));
+
 
         ColorPoint colorPoint1 = new ColorPoint(1, 2, Color.BLUE);
-        System.out.println("point.equals(colorPoint) : "+point.equals(colorPoint));
-        System.out.println("colorPoint.equals(colorPoint1) : "+colorPoint.equals(colorPoint1));
-        System.out.println("colorPoint1.equals(point) : "+colorPoint1.equals(point));
+        System.out.println("\npoint.equals(colorPoint) : " + point.equals(colorPoint));
+        System.out.println("colorPoint.equals(colorPoint1) : " + colorPoint.equals(colorPoint1));
+        System.out.println("colorPoint1.equals(point) : " + colorPoint1.equals(point));
     }
 }
 
@@ -52,11 +60,50 @@ class Person {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
         if (o instanceof Person) {
             return ((Person) o).name == name;
         }
 
         return false;
+    }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (o == null || getClass() != o.getClass()) {
+//            return false;
+//        }
+//        Person person = (Person) o;
+//        return Objects.equals(name, person.name);
+//    }
+}
+
+class Developer extends Person {
+
+    String job;
+
+    public Developer(String name, String job) {
+        super(name);
+        this.job = job;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof Developer)) {
+            return super.equals(o);
+        }
+
+        Developer d = (Developer) o;
+        return name == d.name && job == d.job;
     }
 }
 
@@ -90,6 +137,7 @@ class CaseInsensitiveString {
 }
 
 class Point {
+
     private final int x;
     private final int y;
 
@@ -103,12 +151,13 @@ class Point {
         if (!(o instanceof Point)) {
             return false;
         }
-        Point p = (Point)o;
-        return p.x==x && p.y==y;
+        Point p = (Point) o;
+        return p.x == x && p.y == y;
     }
 }
 
 class ColorPoint extends Point {
+
     private final Color color;
 
     public ColorPoint(int x, int y, Color color) {
