@@ -9,8 +9,6 @@ public class item13_clone {
         PhoneNumber p2 = p1.clone();
         System.out.println(p1);
         System.out.println(p2);
-
-        HashMap<String, Integer> map;
     }
 
     static final class PhoneNumber implements Cloneable {
