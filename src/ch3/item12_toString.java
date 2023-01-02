@@ -30,10 +30,10 @@ public class item12_toString {
             if (o == this) {
                 return true;
             }
-            if (!(o instanceof ch3.PhoneNumber)) {
+            if (!(o instanceof PhoneNumber)) {
                 return false;
             }
-            ch3.PhoneNumber pn = (ch3.PhoneNumber) o;
+            PhoneNumber pn = (PhoneNumber) o;
             return pn.lineNum == this.lineNum && pn.prefix == this.prefix
                 && pn.areaCode == this.areaCode;
         }
