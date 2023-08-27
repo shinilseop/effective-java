@@ -1,17 +1,13 @@
 package ch3;
 
-import java.util.HashMap;
-
-public class item13_clone {
+public class item12_toString {
 
     public static void main(String[] args) {
-        PhoneNumber p1 = new PhoneNumber(707, 867, 5309);
-        PhoneNumber p2 = p1.clone();
-        System.out.println(p1);
-        System.out.println(p2);
+        PhoneNumber p = new PhoneNumber(707, 867, 5309);
+        System.out.println(p);
     }
 
-    static final class PhoneNumber implements Cloneable {
+    static final class PhoneNumber {
 
         private final short areaCode, prefix, lineNum;
 
@@ -21,7 +17,7 @@ public class item13_clone {
             this.lineNum = rangeCheck(lineNum, 9999, "가입자 번호");
         }
 
-        private final short rangeCheck(int val, int max, String arg) {
+        private short rangeCheck(int val, int max, String arg) {
             if (val < 0 || val > max) {
                 throw new IllegalArgumentException(arg + ": " + val);
             }
@@ -56,15 +52,6 @@ public class item13_clone {
         @Override
         public String toString() {
             return String.format("%03d-%03d-%04d", areaCode, prefix, lineNum);
-        }
-
-        @Override
-        public PhoneNumber clone() {
-            try {
-                return (PhoneNumber) super.clone();
-            } catch (CloneNotSupportedException e) {
-                throw new AssertionError();
-            }
         }
     }
 }

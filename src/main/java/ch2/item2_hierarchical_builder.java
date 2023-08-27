@@ -1,6 +1,5 @@
 package ch2;
 
-import ch2.Pizza.Topping;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,11 +8,11 @@ public class item2_hierarchical_builder {
 
     public static void main(String[] args) {
         NyPizza nyPizza = new NyPizza.Builder()
-            .addTopping(Topping.SAUSAGE)
-            .addTopping(Topping.ONION)
+            .addTopping(Pizza.Topping.SAUSAGE)
+            .addTopping(Pizza.Topping.ONION)
             .build();
         Calzone calzone = new Calzone.Builder()
-            .addTopping(Topping.HAM)
+            .addTopping(Pizza.Topping.HAM)
             .sauceInside()
             .build();
 

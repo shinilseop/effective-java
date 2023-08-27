@@ -1,15 +1,15 @@
 package ch3;
 
-import java.math.BigInteger;
-
-public class item12_toString {
+public class item13_clone {
 
     public static void main(String[] args) {
-        PhoneNumber p = new PhoneNumber(707, 867, 5309);
-        System.out.println(p);
+        PhoneNumber p1 = new PhoneNumber(707, 867, 5309);
+        PhoneNumber p2 = p1.clone();
+        System.out.println(p1);
+        System.out.println(p2);
     }
 
-    static final class PhoneNumber {
+    static final class PhoneNumber implements Cloneable {
 
         private final short areaCode, prefix, lineNum;
 
@@ -19,7 +19,7 @@ public class item12_toString {
             this.lineNum = rangeCheck(lineNum, 9999, "가입자 번호");
         }
 
-        private final short rangeCheck(int val, int max, String arg) {
+        private short rangeCheck(int val, int max, String arg) {
             if (val < 0 || val > max) {
                 throw new IllegalArgumentException(arg + ": " + val);
             }
@@ -54,6 +54,15 @@ public class item12_toString {
         @Override
         public String toString() {
             return String.format("%03d-%03d-%04d", areaCode, prefix, lineNum);
+        }
+
+        @Override
+        public PhoneNumber clone() {
+            try {
+                return (PhoneNumber) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new AssertionError();
+            }
         }
     }
 }
